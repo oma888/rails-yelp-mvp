@@ -1,0 +1,50 @@
+<h1>Liste des reviews pour un restaurant donné</h1>
+<p>Find me in app/views/restaurants/index.html.erb</p>
+
+
+<%= form_for(@restaurant) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.text_field :category, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+<% end %>
+
+
+<h2><%= "All the reviews of #{@restaurant.name} restaurant !" %></h2>
+
+<% @reviews.each do |review| %>
+
+  <%= link_to restaurants_path, method: "get" do %>
+
+    <%= link_to restaurant_path(@restaurant) do %>
+      <%= "#{review.rating}, #{review.content}"%>
+    <% end  %>
+
+  <% end %>
+
+  <br>
+  <br>
+
+<% end %>
+
+<br>
+<br>
+<br>
+<i class="fas fa-plus"></i>
+<%= link_to "Add a reviews", new_restaurant_review_path(@restaurant) %>

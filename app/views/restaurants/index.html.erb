@@ -1,0 +1,34 @@
+<h1>Restaurants#index</h1>
+<p>Find me in app/views/restaurants/index.html.erb</p>
+
+
+<!-- app/views/restaurants/index.html.erb -->
+<h2>All yours restaurants !</h2>
+
+<% @restaurants.each do |restaurant| %>
+
+  <%= link_to restaurant_path(restaurant), method: "get" do %>
+
+    <%= link_to   restaurant_path(restaurant) do %>
+      <%= "#{restaurant.name}, #{restaurant.category}, #{restaurant.phone_number}, #{restaurant.address}."%>
+    <% end  %>
+
+    <%= link_to restaurant_reviews_path(restaurant), method: "get"  do %>
+        <i class="fas fa-mail-bulk"></i>
+    <% end %>
+  <% end %>
+
+  <br>
+  <br>
+
+<% end %>
+
+<br>
+<br>
+<br>
+<i class="fas fa-plus"></i>
+<%= link_to "Add a restaurant", new_restaurant_path %>
+
+
+
+<!--     <i class="fas fa-trash"></i> -->
